@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 
+import api from '../../services/api'
+
 function TalkWithAI() {
     const [prompt, setPrompt] = useState('');
     const [chatResponse, setChatResponse] = useState('');
 
     const askAI = async () => {
         try {
-            const response = await fetch(`http://localhost:8080/ask-ai?prompt=${prompt}`)
-            const data = await response.text();
+            const response = await api.get(`ask-ai`, {
+                params: { prompt }
+            });
+            const data = await response.data;
             console.log(data);
             setChatResponse(data);
         } catch (error) {

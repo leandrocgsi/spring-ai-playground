@@ -13,7 +13,7 @@ function ImageGenerator() {
                 params: { prompt }
             });
 
-            const urls = await response.json();
+            const urls = await response.data;
             console.log(urls);
             setImageUrls(urls);
         } catch (error) {
