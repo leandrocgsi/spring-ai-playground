@@ -1,23 +1,41 @@
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import TalkWithAI from './pages/Chat/TalkWithAI'
+import RecipeGenerator from './pages/Recipe/RecipeGenerator';
+import ImageGenerator from './pages/Image/ImageGenerator';
 
 function App() {
+
+  const [activeTab, setActiveTab] = useState('ask-ai');
+
+  const handleTabChange = (tab) => {
+    //alert(tab)
+    setActiveTab(tab);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload......
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button
+        className={activeTab === 'ask-ai' ? 'active' : ''}
+        onClick={() => handleTabChange('ask-ai')}>
+          Talk with AI
+      </button>
+      <button
+        className={activeTab === 'recipe-generator' ? 'active' : ''}
+        onClick={() => handleTabChange('recipe-generator')}>
+          Generate Recipe
+      </button>
+      <button
+        className={activeTab === 'image-generator' ? 'active' : ''}
+        onClick={() => handleTabChange('image-generator')}>
+          Generate Image
+      </button>
+
+      <div>
+        {activeTab === 'ask-ai' && <TalkWithAI/>}
+        {activeTab === 'recipe-generator' && <RecipeGenerator/>}
+        {activeTab === 'image-generator' && <ImageGenerator/>}
+      </div>
     </div>
   );
 }
