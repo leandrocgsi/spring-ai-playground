@@ -1,1 +1,1 @@
-# spring-ai-playground
+# spring-ai-erudio
