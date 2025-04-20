@@ -1,46 +1,47 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
-import api from '../services/api'
-
+import api from '../services/api';
 
 const AudioUploader = () => {
+
     const [file, setFile] = useState(null);
     const [transcription, setTranscription] = useState("");
 
     const handleFileChange = (e) => {
         setFile(e.target.files[0]);
     };
-
-    const handleUpload = async () => {
+    
+    const hanleUpload = async () => {
         const formData = new FormData();
         formData.append('file', file);
 
         try {
             const response = await api.post('transcribe', formData, {
                 headers: {
-                    'Content-Type':'multipart/form-data',
+                   'Content-Type': 'multipart/form-data'
                 }
             });
-            setTranscription(response.data);
+            setTranscription(response.data)
         } catch (error) {
-            console.error("Error transcribing audio", error);
+            console.log("Error transcribing audio", error);
         }
     };
 
-
-    return(
+    return (
         <div className="container">
-            <h1> Audio to Text Transcriber</h1>
+            <h2>Audio to Text Transcriber</h2>
             <div className="file-input">
                 <input type="file" accept="audio/*" onChange={handleFileChange} />
             </div>
-            <button className="upload-button" onClick={handleUpload}>Upload and Transcribe</button>
+            <button className="upload-button"
+                onClick={hanleUpload}>
+                    Upload and Transcribe
+            </button>
             <div className="transcription-result">
                 <h2>Transcription Result</h2>
                 <p>{transcription}</p>
             </div>
         </div>
     );
-}
-
+} 
 export default AudioUploader;
