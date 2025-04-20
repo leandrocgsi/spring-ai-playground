@@ -1,23 +1,25 @@
 import React, { useState } from "react";
+import api from "../../services/api";
 
-import api from '../../services/api'
+function TalkWithAI(){
 
-function TalkWithAI() {
     const [prompt, setPrompt] = useState('');
     const [chatResponse, setChatResponse] = useState('');
 
     const askAI = async () => {
+
         try {
-            const response = await api.get(`ask-ai`, {
+            //{{base_url}}/ask-ai-options?prompt=Which is the most popular typical food in Colombia?
+            const response = await api.get(`ask-ai-options`, {
                 params: { prompt }
-            });
+            })
             const data = await response.data;
             console.log(data);
             setChatResponse(data);
         } catch (error) {
-            console.error("Error generating response : ", error)
+            console.log("Error generating response: ", error);
         }
-    };
+    }
 
     return (
         <div>
@@ -35,5 +37,4 @@ function TalkWithAI() {
         </div>
     );
 }
-
 export default TalkWithAI;

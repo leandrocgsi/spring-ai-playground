@@ -1,48 +1,57 @@
 import React, { useState } from "react";
 
-import api from '../../services/api'
+import api from "../../services/api";
 
-function ImageGenerator() {
+function ImageGenerator(){
 
     const [prompt, setPrompt] = useState('');
+    const [quality, setQuality] = useState('hd');
+    const [n, setN] = useState('2');
+    const [height, setHeight] = useState('1024');
+    const [width, setWidth] = useState('1024');
     const [imageUrls, setImageUrls] = useState([]);
 
-    const generateImage = async () => {
-        try {           
-            const response = await api.get(`generate-image`, {
-                params: { prompt }
-            });
+    const generateImages = async () => {
 
-            const urls = await response.data;
-            console.log(urls);
-            setImageUrls(urls);
+        try {
+            const response = await api.get(`generate-image`, {
+                params: {
+                    prompt,
+                    quality,
+                    n,
+                    height,
+                    width
+                 }
+            })
+            const data = await response.data;
+            console.log(data);
+            setImageUrls(data);
         } catch (error) {
-            console.error("Error generating image : ", error)
+            console.log("Error generating image: ", error);
         }
     }
-    
+
+    // {{base_url}}/generate-image?prompt=Cute bird&quality=hd&n=2&height=1024&width=1024
     return (
         <div>
-            <h2>Generate Image</h2>
+            <h2>Generate Images</h2>
             <input
                 type="text"
                 value={prompt}
                 onChange={(e) => setPrompt(e.target.value)}
-                placeholder="Enter prompt for image"
+                placeholder="Enter a prompt for generate an image"
             />
-            <button onClick={generateImage}>Generate Image</button>
-
+            <button onClick={generateImages}>Generate Image</button>
             <div className="image-grid">
                 {imageUrls.map((url, index) => (
                     <img key={index} src={url} alt={`Generated ${index}`} />
                 ))}
                 {[...Array(4 - imageUrls.length)].map((_, index) => (
-                    <div key={index + imageUrls.length}
+                   <div key={index + imageUrls.length} 
                         className="empty-image-slot"></div>
-                    ))}
+                ))}
             </div>
-        </div>   
+        </div>
     );
 }
-
 export default ImageGenerator;
