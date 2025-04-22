@@ -34,7 +34,8 @@ public class WalletController {
     @GetMapping("/wallet")
     String calculateWalletValue() {
         PromptTemplate template = new PromptTemplate("""
-        What’s the current value in dollars of my wallet based on the latest stock daily prices ?
+        What’s the current value in dollars of my wallet based on the latest stock daily prices?
+        To improve readability, add tables and line breaks when deemed necessary.
         """);
 
         return this.chatClient.prompt(template.create(
@@ -49,6 +50,7 @@ public class WalletController {
     String calculateWalletValueWithTools() {
         PromptTemplate template = new PromptTemplate("""
         What’s the current value in dollars of my wallet based on the latest stock daily prices ?
+        To improve readability, add tables and line breaks when deemed necessary.
         """);
 
         return this.chatClient.prompt(template.create())
@@ -61,6 +63,7 @@ public class WalletController {
     String calculateHighestWalletValue(@PathVariable int days) {
         PromptTemplate template = new PromptTemplate("""
         On which day during last {days} days my wallet had the highest value in dollars based on the historical daily stock prices ?
+        To improve readability, add tables and line breaks when deemed necessary.
         """);
 
         return this.chatClient.prompt(template.create(Map.of("days", days)))
