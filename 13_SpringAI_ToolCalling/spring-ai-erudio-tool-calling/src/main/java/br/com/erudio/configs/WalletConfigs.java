@@ -26,6 +26,12 @@ public class WalletConfigs {
     }
 
     @Bean
+    @Description("Number of shares for each company in my portfolio")
+    public Supplier<WalletResponse> numberOfShares(WalletRepository walletRepository) {
+        return new WalletService(walletRepository);
+    }
+
+    @Bean
     @Description("Latest stock prices")
     public Function<StockRequest, StockResponse> latestStockPrices() {
         return new StockService(restTemplate());
@@ -41,11 +47,6 @@ public class WalletConfigs {
         return new WalletTools(walletRepository);
     }
 
-    @Bean
-    @Description("Number of shares for each company in my portfolio")
-    public Supplier<WalletResponse> numberOfShares(WalletRepository walletRepository) {
-        return new WalletService(walletRepository);
-    }
 
 
 
