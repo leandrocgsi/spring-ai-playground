@@ -8,6 +8,7 @@ import br.com.erudio.services.StockService;
 import br.com.erudio.services.WalletService;
 import br.com.erudio.tools.StockTools;
 import br.com.erudio.tools.WalletTools;
+import io.micrometer.observation.ObservationRegistry;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Description;
