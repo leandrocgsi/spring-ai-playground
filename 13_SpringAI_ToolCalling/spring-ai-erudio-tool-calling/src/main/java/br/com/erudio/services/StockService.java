@@ -15,7 +15,8 @@ import java.util.function.Function;
 
 public class StockService implements Function<StockRequest, StockResponse> {
 
-    private static final Logger LOG = LoggerFactory.getLogger(StockService.class);
+    private static final Logger logger = LoggerFactory.getLogger(StockService.class);
+
     private RestTemplate restTemplate;
 
     public StockService(RestTemplate restTemplate) {
@@ -32,7 +33,7 @@ public class StockService implements Function<StockRequest, StockResponse> {
                 stockRequest.company(),
                 apiKey);
         DailyStockData latestData = data.getValues().get(0);
-        LOG.info("Get stock prices: {} -> {}", stockRequest.company(), latestData.getClose());
+        logger.info("Get stock prices: {} -> {}", stockRequest.company(), latestData.getClose());
         return new StockResponse(Float.parseFloat(latestData.getClose()));
     }
 }
