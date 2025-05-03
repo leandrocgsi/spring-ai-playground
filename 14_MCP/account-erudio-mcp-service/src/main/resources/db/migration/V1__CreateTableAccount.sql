@@ -1,0 +1,6 @@
+CREATE TABLE Account (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    person_id INT NOT NULL,
+    number VARCHAR(20) NOT NULL,
+    balance DECIMAL(15, 2) NOT NULL
+);
