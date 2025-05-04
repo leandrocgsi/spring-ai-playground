@@ -1,0 +1,25 @@
+server:
+  port: 8060
+spring:
+  application:
+    name: person-erudio-mcp-service
+  ai:
+    mcp:
+      server:
+        name: person-erudio-mcp-service
+        version: 1.0.0
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/person_mcp_server_erudio
+    username: root
+    password: admin123
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+    show-sql: false
+    open-in-view: false
+logging:
+  level:
+    org.springframework.ai: DEBUG
