@@ -6,6 +6,8 @@ spring:
       api-key: ${OPEN_AI_API_KEY}
     mcp:
       client:
+        toolcallback:
+          enabled: true
         sse:
           connections:
             person-mcp-server:

@@ -1,3 +1,4 @@
+/*
 package br.com.erudio.config;
 
 import org.springframework.context.annotation.Bean;
@@ -15,3 +16,4 @@ public class ToolConfig {
                 .build();
     }
 }
+*/
