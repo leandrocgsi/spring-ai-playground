@@ -6,6 +6,12 @@ spring:
   ai:
     mcp:
       server:
+        enabled: true            # liga o MCP server
+        stdio: false             # desabilita o transporte STDIO (padrão)
+        type: SYNC               # ou ASYNC, conforme sua necessidade
+        sse-endpoint: /sse       # endpoint SSE para clientes
+        sse-message-endpoint: /mcp/message  # endpoint de mensagens JSON‑RPC
+        base-url: /              # prefixo de URL, se usar context-path
         name: person-erudio-mcp-service
         version: 1.0.0
   datasource:

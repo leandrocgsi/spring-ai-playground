@@ -1,4 +1,4 @@
-package br.com.erudio.tools.configs;
+package br.com.erudio.config;
 
 import br.com.erudio.tools.PersonTools;
 import io.modelcontextprotocol.server.McpServerFeatures;
@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 import java.util.List;
 
 @Configuration
-public class MCPConfigs {
+public class ToolConfig {
 
     @Bean
     public ToolCallbackProvider tools(PersonTools personTools) {

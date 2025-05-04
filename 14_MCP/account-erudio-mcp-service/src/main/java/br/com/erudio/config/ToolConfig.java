@@ -1,4 +1,4 @@
-package br.com.erudio.tools.config;
+package br.com.erudio.config;
 
 import br.com.erudio.tools.AccountTools;
 import org.springframework.ai.tool.ToolCallbackProvider;
@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class MCPConfigs {
+public class ToolConfig {
 
     @Bean
     public ToolCallbackProvider tools(AccountTools accountTools) {

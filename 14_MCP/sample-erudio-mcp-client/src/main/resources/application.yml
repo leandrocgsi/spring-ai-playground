@@ -1,8 +1,14 @@
 spring:
   application:
     name: sample-erudio-mcp-client
-spring.ai.mcp.client.sse.connections:
-  person-mcp-server:
-    url: http://localhost:8060
-  account-mcp-server:
-    url: http://localhost:8040
+  ai:
+    openai:
+      api-key: ${OPEN_AI_API_KEY}
+    mcp:
+      client:
+        sse:
+          connections:
+            person-mcp-server:
+              url: http://localhost:8060
+            account-mcp-server:
+              url: http://localhost:8040
