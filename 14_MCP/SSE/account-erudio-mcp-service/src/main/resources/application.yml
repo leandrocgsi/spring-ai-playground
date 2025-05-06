@@ -1,0 +1,31 @@
+server:
+  port: 8040
+spring:
+  application:
+    name: account-erudio-mcp-service
+  ai:
+    mcp:
+      server:
+        enabled: true            # liga o MCP server
+        stdio: false             # desabilita o transporte STDIO (padrão)
+        type: SYNC               # ou ASYNC, conforme sua necessidade
+        sse-endpoint: /sse       # endpoint SSE para clientes
+        sse-message-endpoint: /mcp/message  # endpoint de mensagens JSON‑RPC
+        base-url: /              # prefixo de URL, se usar context-path
+        name: account-erudio-mcp-service
+        version: 1.0.0
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/account_mcp_server_erudio
+    username: root
+    password: admin123
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+    show-sql: false
+    open-in-view: false
+logging:
+  level:
+    org.springframework.ai: DEBUG

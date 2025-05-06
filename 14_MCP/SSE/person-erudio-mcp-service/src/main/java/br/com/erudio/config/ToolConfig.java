@@ -1,0 +1,39 @@
+package br.com.erudio.config;
+
+import br.com.erudio.tools.PersonTools;
+import io.modelcontextprotocol.server.McpServerFeatures;
+import io.modelcontextprotocol.spec.McpSchema;
+import org.springframework.ai.tool.ToolCallbackProvider;
+import org.springframework.ai.tool.method.MethodToolCallbackProvider;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import java.util.List;
+
+@Configuration
+public class ToolConfig {
+
+    @Bean
+    public ToolCallbackProvider tools(PersonTools personTools) {
+        return MethodToolCallbackProvider.builder()
+            .toolObjects(personTools)
+            .build();
+    }
+
+    @Bean
+    public List<McpServerFeatures.SyncPromptSpecification> prompts() {
+        var prompt = new McpSchema.Prompt("persons-by-nationality", "Get persons by nationality",
+            List.of(new McpSchema.PromptArgument("nationality", "Person nationality", true)));
+
+        var promptSpecification = new McpServerFeatures.SyncPromptSpecification(
+            prompt,
+            (exchange, getPromptRequest) -> {
+            String argument = (String) getPromptRequest.arguments().get("nationality");
+            var userMessage = new McpSchema.PromptMessage(McpSchema.Role.USER,
+                new McpSchema.TextContent("How many persons come from " + argument + " ?"));
+            return new McpSchema.GetPromptResult("Count persons by nationality", List.of(userMessage));
+        });
+
+        return List.of(promptSpecification);
+    }
+}
