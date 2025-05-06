@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: sample-erudio-mcp-client
+  ai:
+    openai:
+      api-key: ${OPEN_AI_API_KEY}
+#      chat:
+#        options:
+#          model: gpt-4-0125-preview
+    mcp:
+      client:
+        toolcallback:
+          enabled: true
+        sse:
+          connections:
+            person-erudio-mcp-service:
+              url: http://localhost:8060
+            account-erudio-mcp-service:
+              url: http://localhost:8040
+logging:
+  level:
+    org.springframework.ai: DEBUG
