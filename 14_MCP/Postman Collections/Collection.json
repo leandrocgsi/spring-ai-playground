@@ -1,0 +1,78 @@
+{
+  "info": {
+    "name": "Erudio API Test Collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Count Accounts by Person ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/accounts/count-by-person-id/123",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["accounts", "count-by-person-id", "123"]
+        }
+      }
+    },
+    {
+      "name": "Balance by Person ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/accounts/balance-by-person-id/123",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["accounts", "balance-by-person-id", "123"]
+        }
+      }
+    },
+    {
+      "name": "Find Persons by Nationality",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/persons/nationality/Brazilian",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["persons", "nationality", "Brazilian"]
+        }
+      }
+    },
+    {
+      "name": "Count Persons by Nationality",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/persons/count-by-nationality/Brazilian",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["persons", "count-by-nationality", "Brazilian"]
+        }
+      }
+    },
+    {
+      "name": "Count Persons by Nationality (from Client)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/persons/count-by-nationality-from-client/Brazilian",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["persons", "count-by-nationality-from-client", "Brazilian"]
+        }
+      }
+    }
+  ]
+}
