@@ -4,6 +4,7 @@ spring:
   ai:
     openai:
       api-key: ${OPEN_AI_API_KEY}
+#  spring.ai.mcp.client.sse.transport-mode=WEBFLUX  # or HTTP_CLIENT
 #      chat:
 #        options:
 #          model: gpt-4-0125-preview
@@ -17,6 +18,8 @@ spring:
               url: http://localhost:8060
             account-erudio-mcp-service:
               url: http://localhost:8040
+          transport-mode: WEBFLUX
+
 logging:
   level:
     org.springframework.ai: DEBUG
